@@ -11,7 +11,7 @@ function Shop() {
   const [displaySearchedItem, setDisplaySearchedItem] = useState([]);
 
   useEffect(() => {
-    fetch('./products.json')
+    fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON')
     .then(res => res.json())
     .then(data => {
       setProducts(data);
