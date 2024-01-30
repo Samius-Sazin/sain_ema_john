@@ -1,0 +1,32 @@
+.Products{
+    display: flex;
+    /* border-bottom: 2px solid #00ab9a; */
+    border-bottom: 2px solid rgb(215, 215, 215);
+    padding: 10px 0px 10px 0px;
+}
+.ProductImage{
+    margin: 10px 20px 0px 0px;
+}
+.ProductImage:hover{
+    scale: 1.02;
+}
+.ProductDetails a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+.margin{
+    margin: 10px 0px 10px 0px;
+}
+.CartButton{
+    font-weight: 600;
+    background-color: #ff9800;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 8px 80px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.CartButton:hover{
+    background-color: #e78a00;
+}

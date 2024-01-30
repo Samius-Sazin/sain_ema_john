@@ -1,0 +1,37 @@
+.ShopContainer{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+    margin: 6px 20px 0px 20px;
+}
+.ProductsContainer{
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    /* border: 2px solid #00ab9a; */
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.CartContainer{
+    height: 300px;
+    /* border: 2px solid #00ab9a; */
+    padding: 10px 5px 0px 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.CartContainer h3{
+    margin: 5px 0px 10px 0px;
+    text-align: center;
+}
+.CartContainer h4{
+    margin: 0px 0px 10px 0px;
+}
+.InputArea{
+    padding: 20px 10px;
+    margin: 2px 0px 10px 0px;
+    text-align: center;
+    background-color: black;
+}
+.searchBox{
+    width: 80%;
+    padding: 15px 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}

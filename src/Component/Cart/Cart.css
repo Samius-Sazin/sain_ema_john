@@ -1,0 +1,25 @@
+.orderSummery{
+    margin: 0px 0px 30px 0px;
+}
+.margin{
+    margin: 10px 0px 0px 0px;
+    font-weight: 550;
+}
+.orderTotal{
+    margin: 10px 0px 0px 0px;
+    color: #e78a00;
+    font-weight: 650;
+    font-size: 22px;
+}
+.orderNowButton{
+    font-weight: 600;
+    background-color: #ff9800;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 8px 80px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.orderNowButton:hover{
+    background-color: #e78a00;
+}
