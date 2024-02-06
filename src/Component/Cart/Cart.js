@@ -42,7 +42,7 @@ function Cart(props) {
       <p className='margin'>Tax : ${tax.toFixed(2)}</p>
       <p className='orderTotal'>Order Total : ${(total).toFixed(2)}</p>  
       <div style={{textAlign: "center"}}>
-        <button className='orderNowButton'>Order Now</button>
+        {props.children}
       </div>
     </div>
   )

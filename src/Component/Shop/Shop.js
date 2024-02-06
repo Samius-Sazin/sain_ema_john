@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css';
 import Products from '../Products/Products';
 import Cart from '../Cart/Cart';
-import {addToDb, getStoredCart} from '../utilities/fakedb';
+import { addToDb, getStoredCart } from '../utilities/fakedb';
+import { Link } from 'react-router-dom';
 
 function Shop() {
 
@@ -11,24 +12,24 @@ function Shop() {
   const [displaySearchedItem, setDisplaySearchedItem] = useState([]);
 
   useEffect(() => {
-    fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON')
-    .then(res => res.json())
-    .then(data => {
-      setProducts(data);
-      setDisplaySearchedItem(data);
-    });
+    fetch('./products.json')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setDisplaySearchedItem(data);
+      });
   }, [])
 
   //get value from local storage, Here LS = Local Storage
   useEffect(() => {
-    if(products.length){
+    if (products.length) {
       const savedCartData = getStoredCart();
       const LSproducts = [];
 
-      for(const LSkey in savedCartData){
+      for (const LSkey in savedCartData) {
         const searchedItemFromLS = products.find(product => product.key === LSkey);
-        
-        if(searchedItemFromLS){
+
+        if (searchedItemFromLS) {
           searchedItemFromLS.quantity = savedCartData[LSkey];
 
           LSproducts.push(searchedItemFromLS);
@@ -39,7 +40,19 @@ function Shop() {
   }, [products])
 
   const handleAddCartButton = (product) => {
-    const updateCart = [...cart, product];
+    const exists = cart.find(prdct => prdct.key === product.key)
+
+    let updateCart = [];
+    if (exists) {
+      const rest = cart.filter(prdct => prdct.key !== product.key);
+      exists.quantity = exists.quantity + 1;
+      updateCart = [...rest, product];
+    }
+    else {
+      product.quantity = 1;
+      updateCart = [...cart, product];
+    }
+
     setCart(updateCart);
 
     //save to local storage
@@ -69,15 +82,19 @@ function Shop() {
           {
             displaySearchedItem.map(product =>
               <Products
-                  key={product.key}
-                  product={product}
-                  handleAddCartButton = {handleAddCartButton}
+                key={product.key}
+                product={product}
+                handleAddCartButton={handleAddCartButton}
               />)
           }
         </div>
 
         <div className='CartContainer'>
-          <Cart cart={cart}/>
+          <Cart cart={cart}>
+            <Link to='/review'>
+              <button className='orderNowButton'>Review Order</button>
+            </Link>
+          </Cart>
         </div>
       </div>
     </>

@@ -26,8 +26,7 @@ function Products(props) {
           initialRating={star}
           emptySymbol="fa-regular fa-star"
           fullSymbol="fa-solid fa-star"
-        >
-        </Rating>
+        ></Rating>
         <br/>
         <button
             onClick={() => props.handleAddCartButton(props.product)}
