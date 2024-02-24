@@ -7,7 +7,7 @@ import { clearTheCart, removeFromDb } from '../utilities/fakedb';
 import { useNavigate } from 'react-router-dom';
 
 function OrderReview() {
-    const [products, setProducts] = UseProducts();
+    const [products] = UseProducts();
 
     //get value from local storage, Here LS = Local Storage
     const [cart, setCart] = UseCart(products);

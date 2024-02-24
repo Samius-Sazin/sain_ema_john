@@ -1,55 +1,39 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import './App.css';
-
 import Header from './Component/Header/Header';
 import Shop from './Component/Shop/Shop';
 import OrderReview from './Component/OrderReview/OrderReview';
 import Inventory from './Component/Inventory/Inventory';
 import NotFound from './Component/NotFound/NotFound';
 import OrderPlaced from './Component/OrderPlaced/OrderPlaced';
-
+import Register from './Component/Register/Register';
+import AuthProvider from './Context/AuthProvider';
+import AuthMiddleware from './AuthMiddleware/AuthMiddleware';
+import Login from './Component/Login/Login';
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Header />
-        
-        <Routes>
+      <AuthProvider>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Shop />} />
+            <Route path='/shop' element={<Shop />} />
 
-          <Route
-            path='/'
-            element={<Shop />}
-          ></Route>
+            <Route path='/review' element={<OrderReview />} />
 
-          <Route
-            path='/shop'
-            element={<Shop />}
-          ></Route>
+            <Route element={<AuthMiddleware />}>
+              <Route path='/placedorder' element={<OrderPlaced />} />
+              <Route path='/inventory' element={<Inventory />} />
+            </Route>
 
-          <Route
-            path='/review'
-            element={<OrderReview/>}
-          ></Route>
-
-          <Route
-            path='/inventory'
-            element={<Inventory/>}
-          ></Route>
-
-          <Route
-            path='/placedorder'
-            element={<OrderPlaced />}
-          ></Route>
-
-          <Route
-            path='*'
-            element={<NotFound/>}
-          ></Route>
-
-        </Routes>
-      </BrowserRouter>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
